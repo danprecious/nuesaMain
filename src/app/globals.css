@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  /* border: 1px solid cyan; */
+}
+
+
+p {
+  font-size: 1.2rem;
+}
+.colors{
+  background-color: rgb(65, 46, 11);
+  background-color: rgb(65, 11, 24);
+  background-color: rgb(219, 174, 49);
+  background-color: rgb(233, 212, 154);
+  background-color: rgb(243, 101, 101);
+}
+
+.gradient-text{
+ background: linear-gradient(to right, #ff0000, #800080);
+ -webkit-background-clip: text;
+ background-clip: text;
+ color: transparent; 
+}
+.text{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif  ;
+}
+
+.typewriter::after{
+  content: '|';
+  animation: blink 0.75s infinite;
+}
+
+@keyframes blink {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.typewriter-text{
+  overflow: hidden;
+  /* border-right: 0.08em solid white; */
+  white-space: no-wrap;
+  margin: 0;
+  letter-spacing: 0.15em;
+  animation: typing 5s steps(40,end);
+}
+
+@keyframes typing{
+  from{
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.star{
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  animation: twinkle 3s infinite;
+  z-index: 100;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+.headers{
+  animation: fallIn 5s ease 1;
+  position: relative;
+}
+
+@keyframes fallIn{
+  0% {
+    opacity: 0;
+    left: 0;
+    top: 0;
+  }
+  100% {
+    opacity: 1;
+    left: auto;
+    top: auto;
+
+  }
+}
