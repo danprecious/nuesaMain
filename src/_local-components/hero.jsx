@@ -34,7 +34,7 @@ const Hero = () => {
         Creating a Culture of <br></br>
         <span className="typewriter typewriter-text transition-all text-center font-bold gradient-text">{text}</span>
       </h1>
-      <p className="md:max-w-[50%] text-center  mt-10 text-[1.2rem]">
+      <p className="md:max-w-[50%] text-center  mt-10 ">
         In a fast growing technological world, there's the need for a proper
         environment for enginneers in the making; we are that student body that
         help the student all-round.

@@ -14,7 +14,8 @@ const navItems = [
   },
   { title: "Our Story", href: "/ourStory" },
   { title: "Communities", href: "/communities" },
-  { title: "Milestones", href: "/milestones" },
+  { title: "Team", href: "/team" },
+  { title: "Resources", href: "/resources" },
 ];
 
 const NavBar = () => {

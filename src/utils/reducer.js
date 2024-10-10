@@ -5,4 +5,7 @@ export const reducer = (state, action) =>{
             navOpen : action.payload
         }
     } 
+
+
+    
 }

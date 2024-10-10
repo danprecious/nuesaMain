@@ -19,7 +19,7 @@ export default SectionLayout;
 export const SectionHeading = ({ text }) => {
   return (
     <h2
-      className={`md:text-[3rem] headers text-[2.2rem] text ${PlayFairDisplay.className}  my-8 font-black`}
+      className={`md:text-[3rem] headers text-center lg:text-left text-[2.2rem] text ${PlayFairDisplay.className}  my-8 font-black`}
     >
       {text}
     </h2>

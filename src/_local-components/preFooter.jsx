@@ -5,9 +5,9 @@ import SpaceEffect from "./spaceEffect";
 
 const PreFooter = () => {
   return (
-    <div className="bg-bg relative text-white md:flex mt-6 md:p-16 p-6">
+    <div className="bg-bg relative text-white md:flex mt-6 md:p-16 py-6 px-1">
     <SpaceEffect />
-      <div className="md:max-w-[50%]">
+      <div className="md:max-w-[50%] mb-10 md:mb-0">
         <h2 className="text-[2.5rem] text-center md:text-left my-8 font-extrabold">
           We've Got Your Back!
         </h2>
@@ -20,7 +20,7 @@ const PreFooter = () => {
           tempora iure, quaerat sint impedit!
         </p>
       </div>
-      <div className="p-4 md:w-[50%] flex justify-center">
+      <div className="p-2 md:w-[50%] flex justify-center">
         <Form />
       </div>
     </div>

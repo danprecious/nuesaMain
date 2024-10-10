@@ -1,8 +1,8 @@
-import React from "react";
+
 
 const SectionOne = () => {
   return (
-    <div className="bg-white text-black flex flex-col items-center mt-6 md:py-16 md:px- p-6">
+    <div className="bg-white text-black flex flex-col items-center mt-6 md:py-16 md:px- md:p-6">
       <h2 className="text-[3rem] mt-12 md:mb-10 mb-5 font-black headers text-center">
         Our Mission
       </h2>

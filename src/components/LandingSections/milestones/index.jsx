@@ -24,13 +24,14 @@ const MilestoneSection = () => {
       <div className="lg:w-[40%]">
         <SectionHeading text={"Milestones"} className="text-center" />
 
-        {images.map(() => {
+        {images.map((image) => {
           return (
             <motion.div
             className="mb-10 border-l-4 border-white px-5"
               initial={{ opacity: 0.1 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 2 }}
+              key={image.id}
             >
               <div className="">
                 <p className="text-base">

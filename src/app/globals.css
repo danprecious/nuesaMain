@@ -8,7 +8,7 @@
 
 
 p {
-  font-size: 1.2rem;
+  @apply text-base;
 }
 .colors{
   background-color: rgb(65, 46, 11);
@@ -98,4 +98,10 @@ p {
     top: auto;
 
   }
+}
+
+.teamScroll{
+  scroll-behavior: smooth;
+  scroll-snap-align: start;
+  overflow-x: scroll;
 }
