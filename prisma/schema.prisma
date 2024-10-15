@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Material {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  title        String? @unique
+  description  String?
+  programme    String?
+  semester     String?
+  materialType String?
+
+  fileId     String    @unique @db.ObjectId
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  uploaderId String?   @db.ObjectId
+  uploader   User?     @relation(fields: [uploaderId], references: [id])
+  categoryId String    @db.ObjectId
+  category   Category? @relation(fields: [categoryId], references: [id])
+}
+
+model Category {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  name      String     @unique
+  materials Material[]
+}
+
+model User {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  email         String?   @unique
+  password      String?
+  name          String?
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  uploads Material[]
+}

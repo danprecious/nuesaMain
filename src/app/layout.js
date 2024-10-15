@@ -1,7 +1,7 @@
 import "./globals.css";
 import { ContextProvider } from "../utils/context";
 import Header from "@/_local-components/header";
-import {Playfair_Display} from 'next/font/google'
+import { Playfair_Display } from "next/font/google";
 import { NavBody } from "@/_local-components/nav-bar";
 import SpaceEffect from "@/_local-components/spaceEffect";
 export const metadata = {
@@ -9,16 +9,19 @@ export const metadata = {
   description: "NUESA OAUSETCH Chapter Website",
 };
 
-const PlayFairDisplay = Playfair_Display({subsets: ['latin']})
+const PlayFairDisplay = Playfair_Display({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`bg-bg relative text-white ${PlayFairDisplay.className}`}>
+      <body
+        className={`bg-bg relative text-white ${PlayFairDisplay.className}`}
+      >
         <ContextProvider>
-        <Header />
-        <SpaceEffect />
-        {children}
+          <Header />
+          <SpaceEffect />
+          {children}
+          {/* <SpaceEffect /> */}
         </ContextProvider>
       </body>
     </html>

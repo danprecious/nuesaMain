@@ -15,7 +15,7 @@ const materialSchema = z.object({
     "Engineering Mathematics",
   ]),
   resourceFile: z.any().refine((file) => file instanceof File, {
-    message: "Cover image is required",
+    message: "Resource file required",
   }),
 });
 
@@ -28,33 +28,33 @@ const UploadForm = () => {
 
   const [categories, setCategories] = useState([]);
 
-  const handleInputData = (e) => {
-    const name = e.target.title;
-    setInputData({ ...inputData, [name]: value });
-  };
+  
 
   const SubmitHandler = async (data) => {
     console.log("Form data submitted:", data);
 
     const formData = new FormData();
+    formData.append("file", data.resourceFile);
+    formData.append("category", data.category);
 
     console.log(...formData);
 
-    // try {
-    //   const response = await axios.post(
-    //     "http://localhost:3000/api/post",
-    //     formData,
-    //     {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data",
-    //       },
-    //     }
-    //   );
-    //   console.log(response.data);
-    //   // Reset form or navigate to another page after successful submission
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(response.data);
+      // Reset form or navigate to another page after successful submission
+    } catch (error) {
+      console.log('error here')
+      console.error(error);
+    }
   };
 
   const {
@@ -75,12 +75,16 @@ const UploadForm = () => {
           className="bg-stone-900 rounded-md w-full lg:p-10 p-2"
         >
           <select
-            className="text-black px-3 py-1 w-full md:w-[50%] my-6"
+            className="text-black px-3 py-1 w-full lg:w-[50%] my-6"
             {...register("category")}
             id="category"
           >
             {categoryList.map((categoryItem) => {
-              return <option value={categoryItem}>{categoryItem}</option>;
+              return (
+                <option key={categoryItem} value={categoryItem}>
+                  {categoryItem}
+                </option>
+              );
             })}
           </select>
           {errors.category && <p>{errors.category.message}</p>}
