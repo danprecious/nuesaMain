@@ -16,6 +16,8 @@ export async function POST(request) {
     // Get the actual file
     const file = data.get("file");
     const categoryItem = data.get("category");
+    const level = data.get("level");
+    const department = data.get("department");
 
     const filename = file.name;
 
@@ -26,7 +28,7 @@ export async function POST(request) {
     if (!existingFile) {
       const id = await gridFsStoreFile(file);
       console.log(id);
-      const newMaterial = await CreateMaterial(filename, id, categoryItem);
+      const newMaterial = await CreateMaterial(filename, id, categoryItem, level, department);
       console.log(newMaterial);
       return NextResponse.json(newMaterial, { status: 200 });
     } else {

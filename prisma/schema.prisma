@@ -14,20 +14,20 @@ datasource db {
 }
 
 model Material {
-  id           String  @id @default(auto()) @map("_id") @db.ObjectId
-  title        String? @unique
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  title        String?   @unique
   description  String?
-  programme    String?
+  department   String?
   semester     String?
   materialType String?
-
-  fileId     String    @unique @db.ObjectId
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  uploaderId String?   @db.ObjectId
-  uploader   User?     @relation(fields: [uploaderId], references: [id])
-  categoryId String    @db.ObjectId
-  category   Category? @relation(fields: [categoryId], references: [id])
+  level        String?
+  fileId       String    @unique @db.ObjectId
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  uploaderId   String?   @db.ObjectId
+  uploader     User?     @relation(fields: [uploaderId], references: [id])
+  categoryId   String    @db.ObjectId
+  category     Category? @relation(fields: [categoryId], references: [id])
 }
 
 model Category {

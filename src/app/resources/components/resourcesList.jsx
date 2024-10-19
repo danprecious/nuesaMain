@@ -17,20 +17,22 @@ export default ResourcesList;
 export const MaterialResources = async () => {
   const materials = await GetMaterials();
 
-  console.log(materials);
+  // console.log(materials);
 
   return (
     <div className="w-full">
       {materials ? (
-        <div className="grid grid-cols-2 lg:grid-cols-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-6 w-full gap-3 place-items-center">
           {materials.map((material) => {
             console.log(material.materialFile.filename);
             return (
               <ResourceFile
+                key={material.id}
                 materialId={material.id}
                 title={material.title}
                 filename={material.materialFile?.filename}
                 fileData={material.materialFileData}
+                category={material.category.name}
               />
             );
           })}

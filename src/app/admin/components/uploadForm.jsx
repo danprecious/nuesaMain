@@ -7,6 +7,8 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { optimizeFonts } from "../../../../next.config";
+import { departments, levels } from "@/utils/constants";
 
 const materialSchema = z.object({
   category: z.enum([
@@ -14,6 +16,14 @@ const materialSchema = z.object({
     "Control Systems",
     "Engineering Mathematics",
   ]),
+  level: z.enum([
+    "100 Level",
+    "200 Level",
+    "300 Level",
+    "400 Level",
+    "500 Level",
+  ]),
+  department: z.enum(["Mechanical", "Civil", "Electrical"]),
   resourceFile: z.any().refine((file) => file instanceof File, {
     message: "Resource file required",
   }),
@@ -28,14 +38,14 @@ const UploadForm = () => {
 
   const [categories, setCategories] = useState([]);
 
-  
-
   const SubmitHandler = async (data) => {
     console.log("Form data submitted:", data);
 
     const formData = new FormData();
     formData.append("file", data.resourceFile);
     formData.append("category", data.category);
+    formData.append("level", data.level);
+    formData.append("department", data.department);
 
     console.log(...formData);
 
@@ -52,7 +62,7 @@ const UploadForm = () => {
       console.log(response.data);
       // Reset form or navigate to another page after successful submission
     } catch (error) {
-      console.log('error here')
+      console.log("error here");
       console.error(error);
     }
   };
@@ -72,21 +82,69 @@ const UploadForm = () => {
       <div className="my-8 lg:w-[70%]">
         <form
           onSubmit={handleSubmit(SubmitHandler)}
-          className="bg-stone-900 rounded-md w-full lg:p-10 p-2"
+          className="bg-stone-900 rounded-md w-full lg:p-10 px-2 py-6"
         >
-          <select
-            className="text-black px-3 py-1 w-full lg:w-[50%] my-6"
-            {...register("category")}
-            id="category"
-          >
-            {categoryList.map((categoryItem) => {
-              return (
-                <option key={categoryItem} value={categoryItem}>
-                  {categoryItem}
-                </option>
-              );
-            })}
-          </select>
+          <div className="my-3">
+            <label htmlFor="level">Select Level</label>
+            <select
+              name="level"
+              id="level"
+              {...register("level")}
+              className="w-full text-black py-1 px-3"
+            >
+              {levels.map((level) => {
+                return (
+                  <option
+                    key={level.id}
+                    value={level.title}
+                    className="text-black"
+                  >
+                    {level.title}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div className="my-3">
+            <label htmlFor="department">Select Department</label>
+            <select
+              name="department"
+              id="department"
+              {...register("department")}
+              className="w-full text-black py-1 px-3"
+            >
+              {departments.map((department) => {
+                return (
+                  <option
+                    key={department.id}
+                    value={department.title}
+                    className="text-black"
+                  >
+                    {department.title}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div className="my-3">
+            <label htmlFor="category">Select field category</label>
+            <select
+              name="category"
+              className="text-black px-3 py-1 w-full lg:w-[50%] my-6"
+              {...register("category")}
+              id="category"
+            >
+              {categoryList.map((categoryItem) => {
+                return (
+                  <option key={categoryItem} value={categoryItem}>
+                    {categoryItem}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
           {errors.category && <p>{errors.category.message}</p>}
 
           <div className="flex lg:justify-start justify-center text-sm  ">
