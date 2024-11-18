@@ -45,7 +45,7 @@ const UploadForm = () => {
     "Engineering Mathematics",
   ];
 
-  const materialTypes = ["Course material", "Past question"];
+  const materialTypes = ["Course material", "Past questions"];
 
   const uploadFile = async (file, data) => {
     const formData = new FormData();

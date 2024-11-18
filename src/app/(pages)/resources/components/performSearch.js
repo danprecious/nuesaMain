@@ -6,18 +6,22 @@ export const performSearch = async (
   searchLevel
 ) => {
   try {
-    const url = `/api/fetchMaterials/page=${1}&limit=${20}`;
+    const url = `/api/fetchMaterials/`;
     console.log(url);
     let { data } = await axios.get(url, {
       params: {
         searchValue: searchValue || "",
         searchDepartment: searchDepartment || "",
         searchLevel: searchLevel || "",
+        page: 1,
+        limit: 20
       },
     });
 
-    console.log(data);
-    return data;
+const materials = await data.materials;
+
+    console.log(materials);
+    return materials;
   } catch (error) {
     console.error(error);
     return error;

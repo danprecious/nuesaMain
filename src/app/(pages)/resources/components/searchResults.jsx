@@ -9,14 +9,15 @@ const SearchResults = ({ data }) => {
       <div className="grid lg:grid-cols-5 grid-cols-1">
         {data
           ? data.map((material) => {
-              console.log(material.materialFile.filename);
+              console.log(material.title);
               return (
                 <div key={material.id}>
                   <ResourceFile
+                    key={material.id}
                     materialId={material.id}
                     title={material.title}
-                    filename={material.materialFile?.filename}
-                    fileData={material.materialFileData}
+                    filename={material.title}
+                    fileUrl={material.fileUrl}
                     category={material.category.name}
                   />
                 </div>

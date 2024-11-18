@@ -121,7 +121,7 @@ const SearchBox = () => {
       </div>
       {filterOpen && (
         <div className="relative z-30 w-full mt-3">
-          <div className="sticky h-[80vh] top-0 left-0 w-full border-[1px] border-stone-700 px-5 py-2 rounded-md">
+          <div className="sticky min-h-[80vh] top-0 left-0 w-full border-[1px] border-stone-700 px-5 py-2 rounded-md">
             <div className="my-5 md:w-[20%] w-full">
               <button
                 onClick={handleFilterSave}
