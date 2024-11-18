@@ -1,3 +1,5 @@
+import prisma from "../lib/prismadb";
+
 export async function CreateMaterial(
   filename,
   id,
@@ -32,6 +34,6 @@ export async function CreateMaterial(
     return material;
   } catch (error) {
     console.log(error);
-    return error;
+    throw new Error(error);
   }
 }
