@@ -2,34 +2,32 @@ import { GetMaterials } from "@/app/actions/getMaterials";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
-  const { searchParams } = new URL(request.url);
+  console.log("search api reached");
+  const { searchParams } = new URL(await request.url);
+  
+  const page = parseInt(searchParams.get("page")) || 1;
+  const limit = parseInt(searchParams.get("limit")) || 10;
+  console.log(page, limit);
 
-  if (!searchParams) {
-    try {
-      const materials = GetMaterials();
-      return new NextResponse(materials, { status: 200 });
-    } catch (error) {
-      return new NextResponse(error, { status: 500 });
-    }
-  } else {
-    const searchValue = searchParams.get("searchValue");
-    const categoryItem = searchParams.get("category");
-    const level = searchParams.get("searchLevel");
-    const department = searchParams.get("searchDepartment");
+  console.log(searchParams);
 
-    const searchData = {
-      searchValue,
-      categoryItem,
-      level,
-      department,
-    };
-    console.log("search api reached")
-    try {
-      const materials = await GetMaterials(searchData);
-      console.log(materials);
-      return new NextResponse(materials, { status: 200 });
-    } catch (error) {
-      return new NextResponse(error, { status: 500 });
-    }
+  const searchValue = searchParams.get("searchValue");
+  const categoryItem = searchParams.get("category");
+  const level = searchParams.get("searchLevel");
+  const department = searchParams.get("searchDepartment");
+
+  const searchData =
+    searchValue || categoryItem || level || department
+      ? { searchValue, categoryItem, level, department }
+      : null;
+
+
+  try {
+    const materials = await GetMaterials(searchData, page, limit);
+    console.log(materials);
+    return NextResponse.json(materials, { status: 200 });
+  } catch (error) {
+    console.error(error);
+    return new NextResponse(error, { status: 500 });
   }
 }

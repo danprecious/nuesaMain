@@ -3,16 +3,18 @@ export async function CreateMaterial(
   id,
   categoryItem,
   level,
-  department
+  department,
+  materialType
 ) {
   try {
     const material = await prisma.material.upsert({
-      where: { title: filename },
+      where: { title: filename }, 
       update: {
         title: filename,
         fileId: id,
         level: level,
         department: department,
+        materialType: materialType,
         category: { connect: { name: categoryItem } },
       },
       create: {
@@ -20,6 +22,7 @@ export async function CreateMaterial(
         fileId: id,
         level: level,
         department: department,
+        materialType: materialType,
         category: {
           connect: { name: categoryItem },
         },

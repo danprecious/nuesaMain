@@ -1,7 +1,7 @@
 import prisma from "./prismadb";
 
 export async function upsertCategory() {
-  const categories = [
+  const categories = [ 
     { name: "Thermodynamics" },
     { name: "Engineering Mathematics" },
     { name: "Control Systems" },

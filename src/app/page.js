@@ -1,16 +1,16 @@
-import SectionOne from "@/_local-components/sectionOne";
-import SectionTwo from "@/_local-components/sectionTwo";
-import Footer from "@/_local-components/footer";
-import PreFooter from "@/_local-components/preFooter";
-import SectionLayout from "@/_local-components/sectionLayout";
-import Hero from "@/_local-components/hero";
-import SpaceEffect from "@/_local-components/spaceEffect";
-import CommunitySection from "@/components/LandingSections/community";
-import MilestoneSection from "@/components/LandingSections/milestones";
-import PresidentNotes from "@/components/presidentNotes";
-import PhotoGallery from "@/components/LandingSections/photogallery";
-import TeamMembers from "@/components/LandingSections/TeamMembers";
-import EventsSection from "@/components/LandingSections/Events";
+import SectionOne from "@/app/components/LandingSections/sectionOne";
+import SectionTwo from "@/app/components/LandingSections/sectionTwo";
+import Footer from "./components/footer";
+import PreFooter from "./components/footer/preFooter";
+import SectionLayout from "@/app/components/LandingSections/sectionLayout";
+import Hero from "@/app/components/LandingSections/hero";
+import SpaceEffect from "@/app/components/global/spaceEffect";
+import CommunitySection from "@/app/components/LandingSections/community";
+import MilestoneSection from "@/app/components/LandingSections/milestones";
+import PresidentNotes from "@/app/components/LandingSections/presidentNotes";
+import PhotoGallery from "@/app/components/LandingSections/photogallery";
+import TeamMembers from "@/app/components/LandingSections/TeamMembers";
+import EventsSection from "@/app/components/LandingSections/Events";
 
 
 const Home = () => {

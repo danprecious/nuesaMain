@@ -1,63 +1,73 @@
 import { GridFSBucket, MongoClient } from "mongodb";
 import prisma from "../lib/prismadb";
-import { contains } from "validator";
-import { departments } from "@/utils/constants";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: "dvjlckdam",
+  api_key: "676657359276124",
+  api_secret: "x9sk7MfBw9Ztk77-ewyf_klvUzc",
+});
 
 const mongoURI = process.env.DATABASE_URL;
 const client = new MongoClient(mongoURI);
 const db = client.db("nuesaSiteResources");
 const bucket = new GridFSBucket(db, { bucketName: "resources" });
 
-export async function GetMaterials(searchData) {
+export async function GetMaterials(searchData, page, limit) {
+  console.log("at getMaterials function", searchData);
+
+  const skip = (page - 1) * limit;
+
   if (!searchData) {
     try {
+      const totalMaterials = await prisma.material.count();
       const materials = await prisma.material.findMany({
+        skip,
+        take: limit,
         include: {
           category: true,
         },
       });
 
-      const fileCursor = bucket.find();
-      const materialFiles = await fileCursor.toArray();
-
-      // console.log(fileCursor);
-
-      const actualMaterials = materials.map((material) => {
-        const materialFile = materialFiles.find(
-          (file) => file._id.toString() === material.fileId
-        );
-
+      const materialsWithCloudFiles = materials.map((material) => {
         return {
           ...material,
-          materialFile,
-          materialFileData: [],
+          fileUrl: cloudinary.url(material.fileId, {
+            resource_type: "raw",
+            quality: "auto",
+            fetch_format: "auto",
+          }),
         };
       });
 
-      for (const material of actualMaterials) {
-        if (material.materialFile) {
-          const downloadStream = bucket.openDownloadStream(
-            material.materialFile._id
-          );
-          const chunks = [];
-
-          for await (const chunk of downloadStream) {
-            chunks.push(chunk);
-          }
-
-          material.materialFileData = Buffer.concat(chunks).toString("base64");
-        } else {
-          material.materialFileData = null;
-        }
-      }
-
-      return actualMaterials;
+      return {
+        materials: materialsWithCloudFiles,
+        total: totalMaterials,
+        page,
+        limit,
+      };
     } catch (error) {
       console.error(error);
-      return "Error fetching posts (1)";
+      return "Error all fetching posts ";
     }
   } else {
     try {
+      const totalMaterials = await prisma.material.count({
+        where: {
+          OR: [
+            {
+              title: { contains: searchData.searchValue, mode: "insensitive" },
+            },
+            { level: { contains: searchData.level, mode: "insensitive" } },
+            {
+              department: {
+                contains: searchData.department,
+                mode: "insensitive",
+              },
+            },
+          ],
+        },
+      });
       const materials = await prisma.material.findMany({
         where: {
           OR: [
@@ -73,47 +83,33 @@ export async function GetMaterials(searchData) {
             },
           ],
         },
+        skip,
+        take: limit,
         // orderBy: { createdAt: "desc" },
         include: {
           category: true,
         },
       });
 
-      const fileCursor = bucket.find();
-      const materialFiles = await fileCursor.toArray();
-
-      // console.log(fileCursor);
-
-      const actualMaterials = materials.map((material) => {
-        const materialFile = materialFiles.find(
-          (file) => file._id.toString() === material.fileId
-        );
-
+      const materialsWithCloudFiles = materials.map((material) => {
         return {
           ...material,
-          materialFile,
-          materialFileData: [],
+          fileUrl: cloudinary.url(material.fileId, {
+            resource_type: "raw",
+            quality: "auto",
+            fetch_format: "auto",
+          }),
         };
       });
 
-      for (const material of actualMaterials) {
-        if (material.materialFile) {
-          const downloadStream = bucket.openDownloadStream(
-            material.materialFile._id
-          );
-          const chunks = [];
-
-          for await (const chunk of downloadStream) {
-            chunks.push(chunk);
-          }
-
-          material.materialFileData = Buffer.concat(chunks).toString("base64");
-        } else {
-          material.materialFileData = null;
-        }
-      }
-
-      return actualMaterials;
+      
+        return {
+          materials: materialsWithCloudFiles,
+          total: totalMaterials,
+          page,
+          limit,
+        };
+    
     } catch (error) {
       console.log(error);
       return "Error fetching posts";

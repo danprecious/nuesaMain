@@ -5,7 +5,7 @@ const os = require("os");
 // import prisma from "@/app/libs/prismadb";
 
 import { GridFSBucket, MongoClient } from "mongodb";
-
+ 
 const mongoURI = process.env.DATABASE_URL;
 const client = new MongoClient(mongoURI);
 const db = client.db("nuesaSiteResources");
