@@ -1,7 +1,7 @@
 import "./globals.css";
 import { ContextProvider } from "./utils/context";
 import Header from "./components/header";
-import { Playfair_Display } from "next/font/google";
+import { Playfair_Display, Advent_Pro, Playpen_Sans, Sunflower } from "next/font/google";
 
 import SpaceEffect from "@/app/components/global/spaceEffect";
 export const metadata = {
@@ -9,7 +9,7 @@ export const metadata = {
   description: "NUESA OAUSETCH Chapter Website",
 };
 
-const PlayFairDisplay = Playfair_Display({ subsets: ["latin"] });
+const PlayFairDisplay = Sunflower({ subsets: ["latin"], weight: ["300", "500", "700"] });
 
 export default function RootLayout({ children }) {
   return (

@@ -4,12 +4,14 @@ import CustomButton from "../global/button";
 import SpaceEffect from "../global/spaceEffect";
 import Form from "../form";
 
+import { PlayFairDisplay } from "../LandingSections/sectionLayout";
+
 const PreFooter = () => {
   return (
     <div className="bg-bg relative text-white md:flex mt-6 md:p-16 py-6 px-1">
     <SpaceEffect />
       <div className="md:max-w-[50%] mb-10 md:mb-0">
-        <h2 className="text-[2.5rem] text-center md:text-left my-8 font-extrabold">
+        <h2 className={`text-[2.5rem] text-center md:text-left my-8 font-extrabold ${PlayFairDisplay.className}`}>
           We've Got Your Back!
         </h2>
         <p className="md:text-justify text-center">

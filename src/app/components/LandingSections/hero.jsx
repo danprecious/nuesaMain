@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import CustomButton from "@/app/components/global/button";
+import { PlayFairDisplay } from "./sectionLayout";
+
 
 const Hero = () => {
   const [text, setText] = useState("");
@@ -30,7 +32,7 @@ const Hero = () => {
 
   return (
     <div className="relative px-3 items-center justify-center flex flex-col min-h-[90vh]"> 
-      <h1 className="text-[2.5rem] md:text-[6rem] px-2 headers text-center ">
+      <h1 className={`text-[2.5rem] md:text-[6rem] px-2 headers text-center font-black ${PlayFairDisplay.className}`}>
         Creating a Culture of <br></br>
         <span className="typewriter typewriter-text transition-all text-center font-bold gradient-text">{text}</span>
       </h1>

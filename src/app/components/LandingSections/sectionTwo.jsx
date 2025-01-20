@@ -1,10 +1,12 @@
 import React from "react";
 import CustomButton from "../global/button";
+import { PlayFairDisplay } from "./sectionLayout";
+
 
 const SectionTwo = () => {
   return (
     <div className="bg-white text-black mt-6 md:p-16 py-6 px-1">
-      <h2 className="text-[3rem] my-8 font-black headers text-center">
+      <h2 className={`text-[3rem] my-8 font-black headers text-center ${PlayFairDisplay.className}`}>
         Our Story
       </h2>
       <div className="lg:flex justify-between w-full">

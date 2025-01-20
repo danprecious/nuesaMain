@@ -15,7 +15,7 @@ import EventsSection from "@/app/components/LandingSections/Events";
 
 const Home = () => {
   return (
-    <main className="relative p-2 h-full">
+    <main className="relative h-full">
       <SpaceEffect />
       <Hero />
       <SectionOne />

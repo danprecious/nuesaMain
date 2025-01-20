@@ -1,20 +1,19 @@
-
+import { PlayFairDisplay } from "./sectionLayout";
 
 const SectionOne = () => {
   return (
     <div className="bg-white text-black flex flex-col items-center mt-6 md:py-16 md:px- md:p-6">
-      <h2 className="text-[3rem] mt-12 md:mb-10 mb-5 font-black headers text-center">
+      <h2
+        className={`text-[3rem] mt-12 md:mb-10 mb-5 font-black headers text-center ${PlayFairDisplay.className}`}
+      >
         Our Mission
       </h2>
       <div className="md:w-[80%] mb-8 md:mt-12 flex flex-col md:flex-row md:justify-between ">
         <div className="md:w-[40%] flex flex-col justify-center md:mt-0 mb-6 ">
-          <h3 className=" text-[1.5rem] font-bold  mb-4">
-            Towards Optimal Student's Welfarism
-          </h3>
+        
           <p className="">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
             nemo minus aperiam maxime quisquam doloremque asperiores nostrum
-            
           </p>
         </div>
         <div className="md:w-[55%] w-[100%] mt-8 md:mt-0">

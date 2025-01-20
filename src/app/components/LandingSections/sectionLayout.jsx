@@ -3,13 +3,13 @@ import CustomButton from "../global/button";
 import { Playfair_Display } from "next/font/google";
 import SpaceEffect from "../global/spaceEffect";
 
-const PlayFairDisplay = Playfair_Display({ subsets: ["latin"] });
+export const PlayFairDisplay = Playfair_Display({ subsets: ["latin"] });
 const SectionLayout = ({ children, headerText }) => {
   return (
-    <div className="bg-white text-black grid place-items-center relative mt-6 md:p-10  p-6">
+    <div className="bg-white text-black grid place-items-center relative mt-6 p-6 lg:p-0">
       <SpaceEffect />
       <SectionHeading text={headerText} className="text-center" />
-      <div>{children}</div>
+      <div className="w-[90vw]">{children}</div>
     </div>
   );
 };

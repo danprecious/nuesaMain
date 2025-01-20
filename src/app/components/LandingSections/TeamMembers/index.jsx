@@ -18,7 +18,7 @@ const TeamMembers = () => {
     { id: 6, src: "/image2.png", alt: "Image 6" },
     { id: 6, src: "/image5.png", alt: "Image 6" },
   ];
-
+ 
   return (
     <div className="grid place-items-center relative mt-6 md:p-10  p-6">
       <SpaceEffect />
@@ -27,7 +27,7 @@ const TeamMembers = () => {
       <div className="w-[100%] overflow-hidden  lg:block py-14">
         <motion.div
           className="h-full flex  items-center"
-          animate={{ x: ["0%", "-100%"] }} // Moves from top to bottom
+          animate={{ x: ["0%", "-100%"] }} 
           transition={{
             repeat: Infinity, // Repeat the animation infinitely
             repeatType: "infinity", // Loop the animation

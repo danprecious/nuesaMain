@@ -3,8 +3,8 @@ import React from "react";
 
 const CommunitySection = () => {
   return (
-    <div className="items-center flex flex-col-reverse lg:flex-row">
-      <div className="md:w-[40%] ">
+    <div className="items-center flex flex-col-reverse lg:flex-row w-[100%]">
+      <div className="md:w-[40%] "> 
         <p className="py-8">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Necessitatibus aspernatur laudantium culpa dicta optio at!
