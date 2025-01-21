@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 *{
-  border: 1px solid cyan;
+  /* border: 1px solid cyan; */
 }
+
 
 
 p {

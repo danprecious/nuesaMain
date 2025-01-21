@@ -66,6 +66,7 @@ export const MaterialResources = () => {
                     title={material.title}
                     filename={material.title}
                     fileUrl={material.fileUrl}
+                    level={material.level}
                     category={material.category.name}
                   />
                 );

@@ -6,7 +6,14 @@ import { useState } from "react";
 
 import { FaDownload, FaFile } from "react-icons/fa6";
 
-const ResourceFile = ({ materialId, title, filename, fileUrl, category }) => {
+const ResourceFile = ({
+  materialId,
+  title,
+  filename,
+  fileUrl,
+  category,
+  level,
+}) => {
   const [downloadError, setDownloadError] = useState("");
 
   const getfileType = (filename) => {
@@ -43,13 +50,18 @@ const ResourceFile = ({ materialId, title, filename, fileUrl, category }) => {
 
   return (
     <div className="flex flex-col w-full py-3 px-2 lg:px-6 lg:py-5 max-w-[30em]  lg:bg-stone-900 lg:rounded-[1.5em] border-solid  ">
-      <div className="flex w-full justify-between  items-center  min-h-[5em]">
-
-        <p className="text-sm text-center hidden md:flex">
-          {title}...
-        </p>
+      <div className="flex w-full justify-between  items-center  min-h-[5em] lg:min-h-[3em]">
+        <p className="text-sm text-center hidden md:flex">{title}...</p>
         <p className="text-sm w-[85%]  md:hidden">{title}</p>
-        <div className="  items-center  rounded-md justify-center flex">
+        <div className="  items-center  rounded-md justify-center flex"></div>
+      </div>
+      <div className=" text-xs text-stone-500 flex justify-between items-center">
+        <div className="">
+          <p className="text-xs text-stone-500 pt-2">{level}</p>
+          <p className="text-xs text-stone-500 pt-2">{category}</p>
+        </div>
+
+        <div className="">
           <button
             onClick={handleDownload}
             disabled={fileUrl ? false : true}
@@ -60,7 +72,6 @@ const ResourceFile = ({ materialId, title, filename, fileUrl, category }) => {
           </button>
         </div>
       </div>
-      <div className=" text-xs text-stone-500 pt-5">{category}</div>
 
       <p className="text-xs text-red-500">{downloadError}</p>
     </div>
