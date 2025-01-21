@@ -10,7 +10,7 @@ const ResourcesPage = () => {
     <section className="lg:px-20 px-2">
       
 
-      <div className="">
+      <div className="flex justify-center">
         <SearchBox />
       </div>
  

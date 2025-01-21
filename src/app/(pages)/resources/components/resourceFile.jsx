@@ -42,14 +42,14 @@ const ResourceFile = ({ materialId, title, filename, fileUrl, category }) => {
   };
 
   return (
-    <div className="flex flex-col w-full py-3 px-2 lg:bg-stone-950 border-b-stone-700 border-solid border-b-[1px] md:border-none">
-      <div className="flex w-full justify-between   md:flex-col md:justify-between md:py-5 items-center md:h-[10em] h-[5em]">
-        <FaFile className="text-[1.5rem] md:text-[3rem] items-center hidden md:flex" />
+    <div className="flex flex-col w-full py-3 px-2 lg:px-6 lg:py-5 max-w-[30em]  lg:bg-stone-900 lg:rounded-[1.5em] border-solid  ">
+      <div className="flex w-full justify-between  items-center  min-h-[5em]">
+
         <p className="text-sm text-center hidden md:flex">
-          {title.slice(0, 12)}...
+          {title}...
         </p>
         <p className="text-sm w-[85%]  md:hidden">{title}</p>
-        <div className=" md:w-full items-center md:bg-stone-800 rounded-md justify-center flex">
+        <div className="  items-center  rounded-md justify-center flex">
           <button
             onClick={handleDownload}
             disabled={fileUrl ? false : true}
@@ -60,7 +60,7 @@ const ResourceFile = ({ materialId, title, filename, fileUrl, category }) => {
           </button>
         </div>
       </div>
-      <div className="md:hidden text-xs text-stone-500 pt-5">{category}</div>
+      <div className=" text-xs text-stone-500 pt-5">{category}</div>
 
       <p className="text-xs text-red-500">{downloadError}</p>
     </div>

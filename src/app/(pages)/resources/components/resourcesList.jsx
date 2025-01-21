@@ -49,7 +49,6 @@ export const MaterialResources = () => {
   const totalPages = Math.ceil(total / limit);
   return (
     <div className="w-full my-6">
-      <h1 className="text-[1.2rem] px-2 lg:mb-6">Check out...</h1>
 
       {isLoading ? (
         <div className="">Loading resources</div>
@@ -57,7 +56,7 @@ export const MaterialResources = () => {
         <div className="">
           {console.log(materials)}
           {materials ? (
-            <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-6 w-full gap-3 place-items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-3 place-items-center">
               {materials.map((material) => {
                 console.log(material.title);
                 return (

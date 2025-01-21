@@ -87,7 +87,7 @@ const SearchBox = () => {
   };
 
   return (
-    <div className="flex flex-col w-full ">
+    <div className="flex flex-col w-full items-center ">
       <div className=" bg-lime-500"></div>
       <div
         className={`${
@@ -107,7 +107,7 @@ const SearchBox = () => {
         <div className="h-full w-[25%] flex justify-between items-center">
           <button
             onClick={handleSearch}
-            className="px-1 py-2 h-full w-full flex justify-center"
+            className="px-1 py-2 h-full w-full flex justify-center items-center"
           >
             <FaSearch className="" />
           </button>

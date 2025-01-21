@@ -6,7 +6,7 @@ const SearchResults = ({ data }) => {
   return (
     <div>
       <h3>Search Results...</h3>
-      <div className="grid lg:grid-cols-5 grid-cols-1">
+      <div className="grid lg:grid-cols-2 grid-cols-1">
         {data
           ? data.map((material) => {
               console.log(material.title);
