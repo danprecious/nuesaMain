@@ -3,6 +3,7 @@
 import axios from "axios";
 import ResourceFile from "./resourceFile";
 import { useEffect, useState } from "react";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 const ResourcesList = () => {
   return (
@@ -49,7 +50,6 @@ export const MaterialResources = () => {
   const totalPages = Math.ceil(total / limit);
   return (
     <div className="w-full my-6">
-
       {isLoading ? (
         <div className="">Loading resources</div>
       ) : (
@@ -72,27 +72,30 @@ export const MaterialResources = () => {
                 );
               })}
 
-              <div>
-                <button
-                  onClick={() => setPage((p) => Math.max(p - 1, 1))}
-                  disabled={page === 1}
-                >
-                  Previous
-                </button>
-                <span>
-                  Page {page} of {totalPages}
-                </span>
-                <button
-                  onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
-                  disabled={page === totalPages}
-                >
-                  Next
-                </button>
-              </div>
+              
             </div>
           ) : (
             <div className="">fetching resources</div>
           )}
+          <div className="flex w-full justify-center my-10">
+            <button
+              onClick={() => setPage((p) => Math.max(p - 1, 1))}
+              disabled={page === 1}
+              className="flex items-center justify-center"
+            >
+              <FaAngleLeft />
+            </button>
+            <span className="px-5">
+              Page {page} of {totalPages}
+            </span>
+            <button
+              onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
+              disabled={page === totalPages}
+              className="flex items-center justify-center"
+            >
+              <FaAngleRight />
+            </button>
+          </div>
         </div>
       )}
     </div>

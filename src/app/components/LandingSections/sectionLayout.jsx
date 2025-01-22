@@ -1,6 +1,6 @@
 import React from "react";
 import CustomButton from "../global/button";
-import { Playfair_Display } from "next/font/google";
+import { Playfair_Display } from "next/font/google"; 
 import SpaceEffect from "../global/spaceEffect";
 
 export const PlayFairDisplay = Playfair_Display({ subsets: ["latin"] });

@@ -67,8 +67,8 @@ const ResourceFile = ({
             disabled={fileUrl ? false : true}
             className="rounded-md py-2 justify-center flex items-center cursor-pointer w-full"
           >
-            {/* <span className="text-sm">download</span> */}
-            <FaDownload className="text" />
+            <span className="text-sm hidden lg:flex text-stone-300">download</span>
+            <FaDownload className="text lg:hidden" />
           </button>
         </div>
       </div>
